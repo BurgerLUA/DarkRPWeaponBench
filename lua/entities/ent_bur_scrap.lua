@@ -1,6 +1,6 @@
 ENT.Type = "anim"
 ENT.Base = "base_entity"
-ENT.PrintName = "WEAPON SCRAP"
+ENT.PrintName = "SCRAP METAL"
 ENT.Author = ""
 ENT.Information = ""
 ENT.Spawnable = true
@@ -10,9 +10,12 @@ ENT.Category = "Weapon Crafting"
 AddCSLuaFile()
 
 local ModelList = {
-"models/props_vehicles/carparts_door01a.mdl",
-"models/props_vehicles/carparts_axel01a.mdl",
-"models/props_vehicles/carparts_muffler01a.mdl"
+	"models/props_junk/metalbucket01a.mdl",
+	"models/props_c17/tools_wrench01a.mdl",
+	"models/props_interiors/pot02a.mdl",
+	"models/props_junk/garbage_metalcan001a.mdl",
+	"models/props_junk/PopCan01a.mdl",
+	"models/props_vehicles/carparts_muffler01a.mdl"
 }
 
 
@@ -94,26 +97,30 @@ function ENT:Draw()
 	if CLIENT then
 		self:DrawModel()
 		
+		
+		
 		local AdjVec1, AdjAng1 = LocalToWorld(Vector(0,0,10),Angle(0,CurTime()*100,90),self:GetPos(),Angle(0,0,0))
 		local AdjVec2, AdjAng2 = LocalToWorld(Vector(0,0,10),Angle(0,CurTime()*100 + 180,90),self:GetPos(),Angle(0,0,0))
+		
+		local ObjectName = "Scrap Metal"
 		
 		cam.Start3D2D( AdjVec1, AdjAng1  , 0.1 )	
 		
 			surface.SetFont( "ScrapFont" )
-			local Width,Height = surface.GetTextSize( "Scrap" )
+			local Width,Height = surface.GetTextSize( ObjectName )
 			surface.SetTextColor( 255, 255, 255, 255 )
 			surface.SetTextPos( -Width/2, -Height/2 )
-			surface.DrawText( "Scrap" )
+			surface.DrawText( ObjectName )
 			
 		cam.End3D2D()
 		
 		cam.Start3D2D( AdjVec2, AdjAng2  , 0.1 )	
 		
 			surface.SetFont( "ScrapFont" )
-			local Width,Height = surface.GetTextSize( "Scrap" )
+			local Width,Height = surface.GetTextSize( ObjectName )
 			surface.SetTextColor( 255, 255, 255, 255 )
 			surface.SetTextPos( -Width/2, -Height/2 )
-			surface.DrawText( "Scrap" )
+			surface.DrawText( ObjectName )
 			
 		cam.End3D2D()
 		
